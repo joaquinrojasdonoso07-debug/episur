@@ -246,17 +246,6 @@
       border: 0;
     }
     
-    /* Nuevos estilos para las imágenes */
-    .image-placeholder {
-      background-color: #f0f0f0;
-      border: 2px dashed #ccc;
-      border-radius: 8px;
-      padding: 20px;
-      text-align: center;
-      margin: 15px 0;
-      color: #777;
-    }
-    
     .product-image {
       width: 100%;
       max-width: 250px;
@@ -670,7 +659,8 @@
       
       <div class="contact-form">
         <h3>Envíanos un mensaje</h3>
-        <form id="contactForm" action="contact.php" method="POST">
+        <!-- Formulario con Formspree para evitar problemas de servidor -->
+        <form id="contactForm" action="https://formspree.io/f/mjvnllwv" method="POST">
           <div class="form-group">
             <label for="name">Nombre</label>
             <input type="text" id="name" name="name" required>
@@ -698,8 +688,8 @@
     <p>&copy; 2025 EpiSur Spa - Todos los derechos reservados.</p>
   </footer>
 
-  <!-- Botón de WhatsApp - ENLACE CORREGIDO -->
-  <a href="https://wa.me/56950983397?text=Hola,%20me%20interesa%20el%20deshollinador%20granulado%20de%20EpiSur" class="whatsapp-float" target="_blank">
+  <!-- Botón de WhatsApp -->
+  <a href="https://wa.me/56951885355?text=Hola,%20me%20interesa%20el%20deshollinador%20granulado%20de%20EpiSur" class="whatsapp-float" target="_blank">
     💬
   </a>
 
@@ -719,7 +709,7 @@
         <li>Efectos visibles: Desde la primera aplicación</li>
       </ul>
       <p>Precio: $12.990 CLP</p>
-      <button class="btn" onclick="window.open('https://wa.me/56950983397?text=Quiero%20comprar%20el%20deshollinador%20granulado', '_blank')">Comprar ahora</button>
+      <button class="btn" onclick="window.open('https://wa.me/56951885355?text=Quiero%20comprar%20el%20deshollinador%20granulado', '_blank')">Comprar ahora</button>
     </div>
   </div>
 
@@ -774,7 +764,7 @@
       });
     });
     
-    // Formulario de contacto con AJAX
+    // Formulario de contacto con Formspree
     document.getElementById('contactForm').addEventListener('submit', function(e) {
       e.preventDefault();
       
@@ -790,21 +780,23 @@
       
       fetch(this.action, {
         method: this.method,
-        body: formData
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
       })
-      .then(response => response.text())
-      .then(data => {
-        if (data.includes('Gracias')) {
+      .then(response => {
+        if (response.ok) {
           formMessage.className = 'form-message success';
+          formMessage.textContent = '¡Gracias por tu mensaje! Te contactaremos pronto.';
           this.reset();
         } else {
-          formMessage.className = 'form-message error';
+          throw new Error('Error en el envío');
         }
-        formMessage.textContent = data;
       })
       .catch(error => {
         formMessage.className = 'form-message error';
-        formMessage.textContent = 'Error de conexión. Por favor, intenta nuevamente.';
+        formMessage.textContent = 'Error de conexión. Por favor, intenta nuevamente o contáctanos directamente por WhatsApp.';
       })
       .finally(() => {
         submitBtn.disabled = false;
