@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EpiSur SPA - Deshollinador Granulado</title>
+  <meta name="description" content="Bienvenido a EpiSur SPA. Ofrecemos un nuevo e innovador producto en Chile. Contáctanos y conoce más de nuestro Deshollinador Granulado.">
+  <meta name="keywords" content="deshollinador, emprendimiento, Chile, servicios, productos, limpieza de chimeneas">
+  <meta name="author" content="episur.cl">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      background: #333333;
+      color: #333333;
+      padding-bottom: 20px;
+    }
+    
+    header {
+      background: #FF4500;
+      color: #fff;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    }
+    
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    
+    .logo {
+      height: 50px;
+      width: auto;
+      border-radius: 5px;
+    }
+    
+    header h1 {
+      margin: 0;
+      font-size: 1.8rem;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    }
+    
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+    }
+    
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 5px 10px;
+      border-radius: 4px;
+      transition: background 0.3s;
+    }
+    
+    nav a:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+    
+    main {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 20px;
+    }
+    
+    section {
+      margin-bottom: 2.5rem;
+      padding: 2rem;
+      background: #F5F5DC;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(255, 69, 0, 0.3);
+    }
+    
+    h2 {
+      color: #004aad;
+      margin-bottom: 1.2rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid #FF4500;
+    }
+    
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      background: #FF4500;
+      color: #fff;
+      margin-top: 3rem;
+      border-radius: 8px;
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    ul {
+      padding-left: 1.5rem;
+    }
+    
+    ul li {
+      margin: 0.8rem 0;
+    }
+    
+    .video-container {
+      text-align: center;
+      margin: 30px 0;
+    }
+    
+    .video-title {
+      color: #004aad;
+      margin-bottom: 20px;
+      font-size: 1.5rem;
+    }
+    
+    .product-video {
+      max-width: 800px;
+      margin: 0 auto;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    }
+    
+    .product-video video {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    
+    .video-description {
+      text-align: center;
+      margin-top: 15px;
+      font-style: italic;
+      color: #555;
+    }
+    
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+    
+    .service-item {
+      background: #fff;
+      padding: 25px;
+      border-radius: 8px;
+      text-align: center;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    .service-icon {
+      font-size: 2.5rem;
+      color: #FF4500;
+      margin-bottom: 15px;
+    }
+    
+    .benefits {
+      margin-top: 30px;
+    }
+    
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+    
+    .benefit-item {
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      text-align: center;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    .benefit-icon {
+      font-size: 2rem;
+      color: #004aad;
+      margin-bottom: 15px;
+    }
+    
+    .about-content {
+      display: flex;
+      gap: 25px;
+      align-items: center;
+    }
+    
+    .about-text {
+      flex: 2;
+    }
+    
+    .about-image {
+      flex: 1;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    .about-image img {
+      width: 430px;
+      height: 297px;
+      display: block;
+      border-radius: 8px;
+      object-fit: contain;
+      margin: 0 auto;
+    }
+    
+    .contact-info {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+    
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    
+    .contact-icon {
+      font-size: 1.8rem;
+      color: #FF4500;
+    }
+    
+    .map-container {
+      margin-top: 20px;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    .map {
+      width: 100%;
+      height: 300px;
+      border: 0;
+    }
+    
+    /* Nuevos estilos para las imágenes */
+    .image-placeholder {
+      background-color: #f0f0f0;
+      border: 2px dashed #ccc;
+      border-radius: 8px;
+      padding: 20px;
+      text-align: center;
+      margin: 15px 0;
+      color: #777;
+    }
+    
+    .product-image {
+      width: 100%;
+      max-width: 250px;
+      height: auto;
+      border-radius: 8px;
+      margin: 10px auto;
+      display: block;
+    }
+    
+    .discurso-section {
+      background-color: #fff;
+      padding: 25px;
+      border-radius: 8px;
+      margin: 20px 0;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    .applications-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+    
+    .application-item {
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      text-align: center;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    .application-image {
+      width: 100%;
+      max-width: 150px;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin: 0 auto 15px;
+      display: block;
+    }
+    
+    @media (max-width: 900px) {
+      .about-content {
+        flex-direction: column;
+      }
+      
+      header {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+      }
+      
+      nav ul {
+        justify-content: center;
+      }
+    }
+    
+    @media (max-width: 600px) {
+      nav ul {
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+      }
+      
+      section {
+        padding: 1.5rem;
+      }
+      
+      .video-title {
+        font-size: 1.3rem;
+      }
+      
+      .applications-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo-container">
+      <!-- Reemplaza con tu logo real -->
+      <img src="logo.png" alt="Logo EpiSur" class="logo">
+      <h1>EpiSur Spa</h1>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#servicios">Producto</a></li>
+        <li><a href="#nosotros">Nosotros</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section id="inicio">
+      <h2>Bienvenidos a EpiSur</h2>
+      <p>Somos <strong>EpiSur</strong>, dedicados a entregar un producto innovador y de calidad en Chile. Nuestro <strong>Deshollinador Granulado</strong> es la solución eficaz para el mantenimiento de chimeneas y estufas.</p>
+      
+      <div class="video-container">
+        <h3 class="video-title">Vea nuestro Deshollinador Granulado en acción</h3>
+        <div class="product-video">
+          <video controls poster="estufa.jpg">
+            <source src="estufa.mp4" type="video/mp4">
+            Tu navegador no soporta el elemento de video.
+          </video>
+        </div>
+        <p class="video-description">Video demostrativo de la efectividad de nuestro producto</p>
+      </div>
+      
+      <div class="about-image">
+        <!-- Imagen existente -->
+        <img src="cucha.png" alt="Equipo de EpiSur">
+      </div>
+    </section>
+
+    <section id="servicios">
+      <h2>Nuestro Producto</h2>
+      <div class="services-grid">
+        <div class="service-item">
+          <div class="service-icon">🔥</div>
+          <h3>Deshollinador Granulado</h3>
+          <p>Producto de alta calidad para limpieza eficiente y segura de chimeneas y estufas. Fácil de usar y altamente efectivo.</p>
+          <!-- Imagen del producto -->
+          <img src="producto.jpg" alt="Deshollinador Granulado EpiSur" class="product-image">
+        </div>
+      </div>
+
+      <div class="benefits">
+        <h3>Beneficios de nuestro Deshollinador Granulado</h3>
+        <div class="benefits-grid">
+          <div class="benefit-item">
+            <div class="benefit-icon">⏱️</div>
+            <h4>Fácil aplicación</h4>
+            <p>Simplemente agregue el producto al fuego y deje que actúe</p>
+          </div>
+          <div class="benefit-item">
+            <div class="benefit-icon">💰</div>
+            <h4>Económico</h4>
+            <p>Evita costosas limpiezas manuales de chimeneas</p>
+          </div>
+          <div class="benefit-item">
+            <div class="benefit-icon">🛡️</div>
+            <h4>Preventivo</h4>
+            <p>Reduce el riesgo de incendios en chimeneas obstruidas</p>
+          </div>
+          <div class="benefit-item">
+            <div class="benefit-icon">🌿</div>
+            <h4>Eficiencia energética</h4>
+            <p>Mejora el rendimiento de su sistema de calefacción</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <section id="servicios2">
+      <div class="discurso-section">
+        <h3>Nuestro Compromiso</h3>
+        <p>En EpiSur nos enorgullece ofrecer un producto que no solo limpia sino que también previene accidentes y mejora la eficiencia energética de su hogar. Nuestro deshollinador granulado es el resultado de años de investigación y desarrollo, creado pensando en la seguridad y comodidad de su familia.</p>
+        <!-- Imagen relacionada con el discurso -->
+        <img src="compromiso.jpg" alt="Nuestro compromiso con la calidad" class="product-image">
+      </div>
+
+      <div class="benefits">
+        <h3>Nuestro Deshollinador Granulado se puede utilizar en:</h3>
+        <div class="applications-grid">
+          <div class="application-item">
+            <img src="estufa-leña.jpg" alt="Estufa a leña" class="application-image">
+            <h4>Estufas a leña o pellet</h4>
+            <p>Limpieza eficaz para todo tipo de estufas</p>
+          </div>
+          <div class="application-item">
+            <img src="cocina-leña.jpg" alt="Cocina a leña" class="application-image">
+            <h4>Cocinas a leña</h4>
+            <p>Mantenga su cocina funcionando optimalmente</p>
+          </div>
+          <div class="application-item">
+            <img src="chimenea.jpg" alt="Chimenea" class="application-image">
+            <h4>Chimeneas</h4>
+            <p>Proteja su hogar de incendios con chimeneas limpias</p>
+          </div>
+          <div class="application-item">
+            <img src="caldera.jpg" alt="Caldera" class="application-image">
+            <h4>Calderas</h4>
+            <p>Mejore la eficiencia de sus sistemas de calefacción</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="nosotros">
+      <h2>Sobre Nosotros</h2>
+      <div class="about-content">
+        <div class="about-text">
+          <p>En EpiSur nos enfocamos en dar confianza, calidad y compromiso a nuestros clientes. Nuestra empresa nace de la necesidad de ofrecer una solución eficiente y segura para la limpieza de chimeneas en hogares chilenos.</p>
+          <p>Nuestro deshollinador granulado es un producto innovador que facilita el mantenimiento de chimeneas, mejorando su rendimiento y seguridad mientras reduce el riesgo de incendios.</p>
+          <p>¡Confía en los expertos! Confía en EpiSur.</p>
+        </div>
+        <!-- Imagen adicional sobre nosotros -->
+        <div class="about-image">
+          <img src="equipo.jpg" alt="El equipo de EpiSur">
+        </div>
+      </div>
+    </section>
+
+    <section id="contacto">
+      <h2>Contacto</h2>
+      <div class="contact-info">
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <div>
+            <h3>Dirección</h3>
+            <p>La Unión, Chile</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📞</div>
+          <div>
+            <h3>Teléfono</h3>
+            <p>+56 9 5188 5355</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">✉️</div>
+          <div>
+            <h3>Correo</h3>
+            <p>EpiSur@gmail.com</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="map-container">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d202844.2955053507!2d-73.35465545!3d-40.2882669!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x96133dd9626d2a4d%3A0x5f4f5d3c28e5b333!2sLa%20Uni%C3%B3n%2C%20Los%20R%C3%ADos!5e0!3m2!1ses!2scl!4v1710868942351!5m2!1ses!2scl" class="map" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 EpiSur Spa - Todos los derechos reservados.</p>
+  </footer>
+</body>
+</html>
