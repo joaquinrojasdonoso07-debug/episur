@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     
     // Destinatario
-    $recipient = "joaquin.rojas@episur.cl";
+    $recipient = "joaquinalonso.rojas@alumnos.ulagos.cl";
     
     // Asunto del correo
     $subject = "Nuevo mensaje de contacto de $name";
