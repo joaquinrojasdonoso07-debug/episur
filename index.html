@@ -299,6 +299,155 @@
       display: block;
     }
     
+    /* Estilos para interactividad */
+    .scroll-top {
+      position: fixed;
+      bottom: 90px;
+      right: 30px;
+      background: #FF4500;
+      color: white;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+      opacity: 0;
+      transition: opacity 0.3s;
+      z-index: 1000;
+    }
+    
+    .scroll-top.visible {
+      opacity: 1;
+    }
+    
+    .contact-form {
+      margin-top: 30px;
+      background: #fff;
+      padding: 25px;
+      border-radius: 8px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    .form-group {
+      margin-bottom: 20px;
+    }
+    
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+    
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-family: inherit;
+    }
+    
+    .form-group textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+    
+    .btn {
+      background: #FF4500;
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: background 0.3s;
+    }
+    
+    .btn:hover {
+      background: #e03d00;
+    }
+    
+    .btn:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+    }
+    
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: 1001;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .modal-content {
+      background: #F5F5DC;
+      padding: 30px;
+      border-radius: 8px;
+      max-width: 500px;
+      width: 90%;
+      text-align: center;
+      position: relative;
+    }
+    
+    .close-modal {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      font-size: 1.5rem;
+      cursor: pointer;
+      background: none;
+      border: none;
+      font-size: 24px;
+    }
+    
+    .whatsapp-float {
+      position: fixed;
+      bottom: 30px;
+      left: 30px;
+      background: #25D366;
+      color: white;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+      z-index: 1000;
+      font-size: 2rem;
+      text-decoration: none;
+    }
+    
+    .form-message {
+      margin-top: 15px;
+      padding: 10px;
+      border-radius: 4px;
+      text-align: center;
+      display: none;
+    }
+    
+    .form-message.success {
+      background: #d4edda;
+      color: #155724;
+      display: block;
+    }
+    
+    .form-message.error {
+      background: #f8d7da;
+      color: #721c24;
+      display: block;
+    }
+    
     @media (max-width: 900px) {
       .about-content {
         flex-direction: column;
@@ -312,6 +461,16 @@
       
       nav ul {
         justify-content: center;
+      }
+      
+      .scroll-top {
+        bottom: 80px;
+        right: 20px;
+      }
+      
+      .whatsapp-float {
+        bottom: 20px;
+        left: 20px;
       }
     }
     
@@ -333,15 +492,29 @@
       .applications-grid {
         grid-template-columns: 1fr;
       }
+      
+      .scroll-top {
+        width: 40px;
+        height: 40px;
+        bottom: 70px;
+        right: 15px;
+      }
+      
+      .whatsapp-float {
+        width: 50px;
+        height: 50px;
+        font-size: 1.7rem;
+        bottom: 15px;
+        left: 15px;
+      }
     }
   </style>
 </head>
 <body>
   <header>
     <div class="logo-container">
-      <!-- Reemplaza con tu logo real -->
       <img src="logo.jpg" alt="Logo EpiSur" class="logo">
-      <h1>EpiSur Spa</h1html>
+      <h1>EpiSur Spa</h1>
     </div>
     <nav>
       <ul>
@@ -357,10 +530,9 @@
     <section id="inicio">
       <h2>Bienvenidos a EpiSur</h2>
       <p>🔥 Con <strong>EpiSur</strong>, tu calor es más seguro 🔥</p>
-      <p>  </p>
       <p>En <strong>EpiSur</strong> nos dedicamos a entregar productos innovadores y de calidad en el sur de Chile. Nuestro Deshollinador Granulado es la solución eficaz para el mantenimiento de chimeneas, estufas y sistemas de calefacción a leña o pellet.</p>
-      <p>  </p>
       <p>Pensado especialmente para los hogares de las regiones de La Araucanía, Los Ríos y Los Lagos, este producto garantiza una limpieza profunda, mayor seguridad y un mejor rendimiento de tus equipos, para que disfrutes del calor de tu hogar con total tranquilidad.</p>
+      
       <div class="video-container">
         <h3 class="video-title">Vea nuestro Deshollinador granulado en acción</h3>
         <div class="product-video">
@@ -373,7 +545,6 @@
       </div>
       
       <div class="about-image">
-        <!-- Imagen existente -->
         <img src="cucha.png" alt="Equipo de EpiSur">
       </div>
     </section>
@@ -385,8 +556,8 @@
           <div class="service-icon">🔥</div>
           <h3>Deshollinador Granulado</h3>
           <p>Producto de alta calidad para limpieza eficiente y segura de chimeneas y estufas. Fácil de usar y altamente efectivo.</p>
-          <!-- Imagen del producto -->
           <img src="producto.jpg" alt="Deshollinador Granulado EpiSur" class="product-image">
+          <button class="btn" onclick="openModal('productModal')">Más información</button>
         </div>
       </div>
 
@@ -419,21 +590,15 @@
     
     <section id="servicios2">
       <div class="discurso-section">
-        <p>Deshollinador Granulado Multiuso para Chimeneas y Estufas
-
-Mantén tu hogar seguro y tu sistema de calefacción funcionando al máximo con este deshollinador granulado de fácil aplicación. Su fórmula especializada elimina los depósitos de hollín y creosota que se acumulan con el uso, reduciendo el riesgo de incendio y mejorando la eficiencia de tus equipos.
-
-A diferencia de otros productos, su formato en gránulos permite que llegue a cada rincón del conducto, incluso en zonas difíciles de alcanzar, asegurando una limpieza profunda y completa en poco tiempo.</p
-
-<p>✅ Versátil y eficaz: Ideal para chimeneas, estufas de combustión lenta a leña, estufas a pellet, cocinas a leña y calderas a leña.</p>
-<p>✅ Mayor seguridad: Disminuye la acumulación de creosota y hollín, reduciendo riesgos de incendio.</p>
-<p>✅ Rendimiento superior: Mejora la circulación del aire y optimiza el funcionamiento de tus equipos de calefacción.</p>
-<p>✅ Fácil aplicación: Solo necesitas usarlo regularmente para mantener tu sistema limpio, sin necesidad de herramientas especiales.</p>
-
-<p>Con este deshollinador podrás disfrutar del calor de tu hogar con tranquilidad, cuidando tanto la seguridad de tu familia como la vida útil de tu sistema de calefacción.</p>
-
-<p>✨ Una solución práctica, segura y efectiva para mantener tu chimenea o estufa como nueva.</p>
-        <!-- Imagen relacionada con el discurso -->
+        <p>Deshollinador Granulado Multiuso para Chimeneas y Estufas</p>
+        <p>Mantén tu hogar seguro y tu sistema de calefacción funcionando al máximo con este deshollinador granulado de fácil aplicación. Su fórmula especializada elimina los depósitos de hollín y creosota que se acumulan con el uso, reduciendo el riesgo de incendio y mejorando la eficiencia de tus equipos.</p>
+        <p>A diferencia de otros productos, su formato en gránulos permite que llegue a cada rincón del conducto, incluso en zonas difíciles de alcanzar, asegurando una limpieza profunda y completa en poco tiempo.</p>
+        <p>✅ Versátil y eficaz: Ideal para chimeneas, estufas de combustión lenta a leña, estufas a pellet, cocinas a leña y calderas a leña.</p>
+        <p>✅ Mayor seguridad: Disminuye la acumulación de creosota y hollín, reduciendo riesgos de incendio.</p>
+        <p>✅ Rendimiento superior: Mejora la circulación del aire y optimiza el funcionamiento de tus equipos de calefacción.</p>
+        <p>✅ Fácil aplicación: Solo necesitas usarlo regularmente para mantener tu sistema limpio, sin necesidad de herramientas especiales.</p>
+        <p>Con este deshollinador podrás disfrutar del calor de tu hogar con tranquilidad, cuidando tanto la seguridad de tu familia como la vida útil de tu sistema de calefacción.</p>
+        <p>✨ Una solución práctica, segura y efectiva para mantener tu chimenea o estufa como nueva.</p>
       </div>
 
       <div class="benefits">
@@ -468,12 +633,9 @@ A diferencia de otros productos, su formato en gránulos permite que llegue a ca
       <div class="about-content">
         <div class="about-text">
           <p>En EpiSur trabajamos con compromiso, calidad y cercanía para entregar la mejor experiencia a nuestros clientes. Nuestra empresa nace de la necesidad de ofrecer una solución eficiente y segura para la limpieza y mantención de sistemas de calefacción en los hogares del sur de Chile.</p>
-
           <p>Nuestro Deshollinador Granulado es un producto innovador que simplifica el mantenimiento de chimeneas, estufas y calderas, mejorando su rendimiento, alargando su vida útil y reduciendo el riesgo de incendios.</p>
-
           <p>🔥 Confía en la experiencia. Confía en EpiSur. 🔥</p>
         </div>
-        <!-- Imagen adicional sobre nosotros -->
         <div class="about-image">
           <img src="equipo.jpg" alt="El equipo de EpiSur">
         </div>
@@ -506,6 +668,26 @@ A diferencia de otros productos, su formato en gránulos permite que llegue a ca
         </div>
       </div>
       
+      <div class="contact-form">
+        <h3>Envíanos un mensaje</h3>
+        <form id="contactForm" action="contact.php" method="POST">
+          <div class="form-group">
+            <label for="name">Nombre</label>
+            <input type="text" id="name" name="name" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Correo electrónico</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          <div class="form-group">
+            <label for="message">Mensaje</label>
+            <textarea id="message" name="message" required></textarea>
+          </div>
+          <button type="submit" class="btn" id="submitBtn">Enviar mensaje</button>
+          <div id="formMessage" class="form-message"></div>
+        </form>
+      </div>
+      
       <div class="map-container">
         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d202844.2955053507!2d-73.35465545!3d-40.2882669!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x96133dd9626d2a4d%3A0x5f4f5d3c28e5b333!2sLa%20Uni%C3%B3n%2C%20Los%20R%C3%ADos!5e0!3m2!1ses!2scl!4v1710868942351!5m2!1ses!2scl" class="map" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
@@ -515,5 +697,123 @@ A diferencia de otros productos, su formato en gránulos permite que llegue a ca
   <footer>
     <p>&copy; 2025 EpiSur Spa - Todos los derechos reservados.</p>
   </footer>
+
+  <!-- Botón de WhatsApp - ENLACE CORREGIDO -->
+  <a href="https://wa.me/56951885355?text=Hola,%20me%20interesa%20el%20deshollinador%20granulado%20de%20EpiSur" class="whatsapp-float" target="_blank">
+    💬
+  </a>
+
+  <!-- Botón para volver arriba -->
+  <div class="scroll-top" onclick="scrollToTop()">↑</div>
+
+  <!-- Modal para producto -->
+  <div id="productModal" class="modal">
+    <div class="modal-content">
+      <button class="close-modal" onclick="closeModal('productModal')">&times;</button>
+      <h3>Deshollinador Granulado EpiSur</h3>
+      <p>Nuestro producto revolucionario para el mantenimiento de sistemas de calefacción:</p>
+      <ul>
+        <li>Presentación: Envase de 1kg</li>
+        <li>Modo de uso: Aplicar directamente al fuego encendido</li>
+        <li>Frecuencia: Una vez cada 15-20 días durante temporada de uso</li>
+        <li>Efectos visibles: Desde la primera aplicación</li>
+      </ul>
+      <p>Precio: $12.990 CLP</p>
+      <button class="btn" onclick="window.open('https://wa.me/56951885355?text=Quiero%20comprar%20el%20deshollinador%20granulado', '_blank')">Comprar ahora</button>
+    </div>
+  </div>
+
+  <script>
+    // Botón para volver arriba
+    const scrollButton = document.querySelector('.scroll-top');
+    
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        scrollButton.classList.add('visible');
+      } else {
+        scrollButton.classList.remove('visible');
+      }
+    });
+    
+    function scrollToTop() {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }
+    
+    // Navegación suave
+    document.querySelectorAll('nav a').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+        
+        window.scrollTo({
+          top: targetElement.offsetTop - 20,
+          behavior: 'smooth'
+        });
+      });
+    });
+    
+    // Funcionalidad del modal
+    function openModal(modalId) {
+      document.getElementById(modalId).style.display = 'flex';
+    }
+    
+    function closeModal(modalId) {
+      document.getElementById(modalId).style.display = 'none';
+    }
+    
+    // Cerrar modal al hacer clic fuera del contenido
+    window.addEventListener('click', (e) => {
+      document.querySelectorAll('.modal').forEach(modal => {
+        if (e.target === modal) {
+          modal.style.display = 'none';
+        }
+      });
+    });
+    
+    // Formulario de contacto con AJAX
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const submitBtn = document.getElementById('submitBtn');
+      const formMessage = document.getElementById('formMessage');
+      const formData = new FormData(this);
+      
+      // Deshabilitar el botón para evitar múltiples envíos
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Enviando...';
+      formMessage.className = 'form-message';
+      formMessage.textContent = '';
+      
+      fetch(this.action, {
+        method: this.method,
+        body: formData
+      })
+      .then(response => response.text())
+      .then(data => {
+        if (data.includes('Gracias')) {
+          formMessage.className = 'form-message success';
+          this.reset();
+        } else {
+          formMessage.className = 'form-message error';
+        }
+        formMessage.textContent = data;
+      })
+      .catch(error => {
+        formMessage.className = 'form-message error';
+        formMessage.textContent = 'Error de conexión. Por favor, intenta nuevamente.';
+      })
+      .finally(() => {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Enviar mensaje';
+        
+        // Desplazar hacia el mensaje de resultado
+        formMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      });
+    });
+  </script>
 </body>
 </html>
