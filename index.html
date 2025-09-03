@@ -226,6 +226,10 @@
       display: flex;
       align-items: center;
       gap: 15px;
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
     }
     
     .contact-icon {
@@ -312,38 +316,6 @@
       opacity: 1;
     }
     
-    .contact-form {
-      margin-top: 30px;
-      background: #fff;
-      padding: 25px;
-      border-radius: 8px;
-      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-    }
-    
-    .form-group {
-      margin-bottom: 20px;
-    }
-    
-    .form-group label {
-      display: block;
-      margin-bottom: 8px;
-      font-weight: 500;
-    }
-    
-    .form-group input,
-    .form-group textarea {
-      width: 100%;
-      padding: 12px;
-      border: 1px solid #ddd;
-      border-radius: 4px;
-      font-family: inherit;
-    }
-    
-    .form-group textarea {
-      min-height: 120px;
-      resize: vertical;
-    }
-    
     .btn {
       background: #FF4500;
       color: white;
@@ -357,11 +329,6 @@
     
     .btn:hover {
       background: #e03d00;
-    }
-    
-    .btn:disabled {
-      background: #ccc;
-      cursor: not-allowed;
     }
     
     .modal {
@@ -417,24 +384,36 @@
       text-decoration: none;
     }
     
-    .form-message {
-      margin-top: 15px;
-      padding: 10px;
-      border-radius: 4px;
+    .contact-options {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-top: 30px;
+    }
+    
+    .contact-option {
+      background: #fff;
+      padding: 25px;
+      border-radius: 8px;
       text-align: center;
-      display: none;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
     }
     
-    .form-message.success {
-      background: #d4edda;
-      color: #155724;
-      display: block;
+    .contact-option-icon {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
     }
     
-    .form-message.error {
-      background: #f8d7da;
-      color: #721c24;
-      display: block;
+    .contact-option.whatsapp .contact-option-icon {
+      color: #25D366;
+    }
+    
+    .contact-option.email .contact-option-icon {
+      color: #FF4500;
+    }
+    
+    .contact-option.phone .contact-option-icon {
+      color: #004aad;
     }
     
     @media (max-width: 900px) {
@@ -495,6 +474,10 @@
         font-size: 1.7rem;
         bottom: 15px;
         left: 15px;
+      }
+      
+      .contact-options {
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -657,25 +640,27 @@
         </div>
       </div>
       
-      <div class="contact-form">
-        <h3>Envíanos un mensaje</h3>
-        <!-- Formulario con Formspree para evitar problemas de servidor -->
-        <form id="contactForm" action="https://formspree.io/f/mjvnllwv" method="POST">
-          <div class="form-group">
-            <label for="name">Nombre</label>
-            <input type="text" id="name" name="name" required>
-          </div>
-          <div class="form-group">
-            <label for="email">Correo electrónico</label>
-            <input type="email" id="email" name="email" required>
-          </div>
-          <div class="form-group">
-            <label for="message">Mensaje</label>
-            <textarea id="message" name="message" required></textarea>
-          </div>
-          <button type="submit" class="btn" id="submitBtn">Enviar mensaje</button>
-          <div id="formMessage" class="form-message"></div>
-        </form>
+      <div class="contact-options">
+        <div class="contact-option whatsapp">
+          <div class="contact-option-icon">💬</div>
+          <h3>WhatsApp</h3>
+          <p>Contáctanos directamente por WhatsApp para una respuesta rápida</p>
+          <a href="https://wa.me/56951885355?text=Hola,%20me%20interesa%20el%20deshollinador%20granulado%20de%20EpiSur" class="btn" target="_blank">Escribir por WhatsApp</a>
+        </div>
+        
+        <div class="contact-option email">
+          <div class="contact-option-icon">✉️</div>
+          <h3>Correo Electrónico</h3>
+          <p>Envíanos un correo directo para consultas o pedidos</p>
+          <a href="mailto:joaquin.rojas@episur.cl" class="btn">Enviar correo</a>
+        </div>
+        
+        <div class="contact-option phone">
+          <div class="contact-option-icon">📞</div>
+          <h3>Llamada Telefónica</h3>
+          <p>Llámanos directamente para consultas inmediatas</p>
+          <a href="tel:+56951885355" class="btn">Llamar ahora</a>
+        </div>
       </div>
       
       <div class="map-container">
@@ -761,49 +746,6 @@
         if (e.target === modal) {
           modal.style.display = 'none';
         }
-      });
-    });
-    
-    // Formulario de contacto con Formspree
-    document.getElementById('contactForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      
-      const submitBtn = document.getElementById('submitBtn');
-      const formMessage = document.getElementById('formMessage');
-      const formData = new FormData(this);
-      
-      // Deshabilitar el botón para evitar múltiples envíos
-      submitBtn.disabled = true;
-      submitBtn.textContent = 'Enviando...';
-      formMessage.className = 'form-message';
-      formMessage.textContent = '';
-      
-      fetch(this.action, {
-        method: this.method,
-        body: formData,
-        headers: {
-          'Accept': 'application/json'
-        }
-      })
-      .then(response => {
-        if (response.ok) {
-          formMessage.className = 'form-message success';
-          formMessage.textContent = '¡Gracias por tu mensaje! Te contactaremos pronto.';
-          this.reset();
-        } else {
-          throw new Error('Error en el envío');
-        }
-      })
-      .catch(error => {
-        formMessage.className = 'form-message error';
-        formMessage.textContent = 'Error de conexión. Por favor, intenta nuevamente o contáctanos directamente por WhatsApp.';
-      })
-      .finally(() => {
-        submitBtn.disabled = false;
-        submitBtn.textContent = 'Enviar mensaje';
-        
-        // Desplazar hacia el mensaje de resultado
-        formMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
       });
     });
   </script>
