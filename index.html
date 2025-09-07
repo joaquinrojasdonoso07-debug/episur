@@ -7,118 +7,389 @@
   <meta name="description" content="Bienvenido a EpySur SPA. Ofrecemos un nuevo e innovador producto en Chile. Contáctanos y conoce más de nuestro Deshollinador Granulado.">
   <meta name="keywords" content="deshollinador, emprendimiento, Chile, servicios, productos, limpieza de chimeneas">
   <meta name="author" content="epysur.cl">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
+    /* Variables y reset */
+    :root {
+      --primary: #FF4500;
+      --secondary: #004aad;
+      --accent: #F5F5DC;
+      --dark: #333333;
+      --light: #f5f7fa;
+      --gray: #7f8c8d;
+      --success: #1dd1a1;
+      --warning: #feca57;
+      --text: 333;
+      --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      --transition: all 0.3s ease;
+    }
+    
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+    html {
+      scroll-behavior: smooth;
     }
     
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--light);
+      color: var(--text);
       line-height: 1.6;
-      background: #333333;
-      color: #333333;
-      padding-bottom: 20px;
+      overflow-x: hidden;
     }
     
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    .section {
+      padding: 80px 0;
+    }
+    
+    .section-title {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+    
+    .section-title h2 {
+      font-size: 2.5rem;
+      color: var(--dark);
+      position: relative;
+      display: inline-block;
+      padding-bottom: 15px;
+    }
+    
+    .section-title h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      border-radius: 2px;
+    }
+    
+    .btn {
+      display: inline-block;
+      background: linear-gradient(to right, var(--primary), var(--secondary);
+      color: white;
+      padding: 12px 30px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: var(--transition);
+      border: none;
+      cursor: pointer;
+      box-shadow: var(--shadow);
+    }
+    
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+    
+    .btn-accent {
+      background: linear-gradient(to right, var(--accent), #ff8e8e);
+    }
+    
+    /* Header */
     header {
-      background: #FF4500;
-      color: #fff;
-      padding: 1rem 2rem;
+      background: white;
+      color: var(--dark);
+      padding: 15px 0;
+      box-shadow: var(--shadow);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    
+    nav {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
     }
     
     .logo-container {
       display: flex;
       align-items: center;
-      gap: 50px;
+      gap: 20px;
     }
     
-    .logo {
-      height: 125px;
+    .logo-img {
+      height: 80px;
       width: auto;
       border-radius: 5px;
     }
     
-    header h1 {
-      margin: 0;
-      font-size: 1.8rem;
-      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-    }
-    
-    nav ul {
-      list-style: none;
+    .logo-text {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--primary);
       display: flex;
-      gap: 1.5rem;
+      align-items: center;
     }
     
-    nav a {
-      color: #fff;
+    .logo-text i {
+      margin-right: 10px;
+      color: var(--secondary);
+    }
+    
+    .menu {
+      display: flex;
+      list-style: none;
+    }
+    
+    .menu li {
+      margin-left: 25px;
+    }
+    
+    .menu a {
+      color: var(--dark);
       text-decoration: none;
-      font-weight: 500;
-      padding: 5px 10px;
-      border-radius: 4px;
-      transition: background 0.3s;
+      font-weight: 600;
+      transition: var(--transition);
+      position: relative;
     }
     
-    nav a:hover {
-      background: rgba(255, 255, 255, 0.2);
+    .menu a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 3px;
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      transition: var(--transition);
+      border-radius: 3px;
     }
     
-    main {
-      max-width: 1200px;
-      margin: 2rem auto;
-      padding: 0 20px;
+    .menu a:hover::after {
+      width: 100%;
     }
     
-    section {
-      margin-bottom: 2.5rem;
-      padding: 2rem;
-      background: #F5F5DC;
-      border-radius: 12px;
-      box-shadow: 0 4px 15px rgba(255, 69, 0, 0.3);
+    .menu a:hover {
+      color: var(--primary);
     }
     
-    h2 {
-      color: #004aad;
-      margin-bottom: 1.2rem;
-      padding-bottom: 0.5rem;
-      border-bottom: 2px solid #FF4500;
+    .mobile-menu-btn {
+      display: none;
+      font-size: 24px;
+      background: none;
+      border: none;
+      color: var(--dark);
+      cursor: pointer;
     }
     
-    footer {
+    /* Hero Section */
+    .hero {
+      padding: 120px 0;
+      background: linear-gradient(135deg, rgba(255, 69, 0, 0.8), rgba(0, 74, 173, 0.8)), url('llama.jpg') center/cover no-repeat;
+      color: white;
       text-align: center;
-      padding: 1.5rem;
-      background: #FF4500;
-      color: #fff;
-      margin-top: 3rem;
+      margin-bottom: 40px;
+      border-radius: 0 0 20px 20px;
+    }
+    
+    .hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 20px;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    }
+    
+    .hero p {
+      font-size: 1.3rem;
+      max-width: 700px;
+      margin: 0 auto 30px;
+    }
+    
+    .hero-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 30px;
+    }
+    
+    /* Features */
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+    
+    .feature-card {
+      background: white;
+      padding: 40px 30px;
+      border-radius: 10px;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      text-align: center;
+      border-top: 5px solid var(--primary);
+    }
+    
+    .feature-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    }
+    
+    .feature-card h3 {
+      margin: 20px 0;
+      color: var(--dark);
+      font-size: 1.5rem;
+    }
+    
+    .feature-icon {
+      font-size: 50px;
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 20px;
+    }
+    
+    /* About */
+    .about {
+      background: white;
+    }
+    
+    .about-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: center;
+    }
+    
+    .about-image {
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    
+    .about-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: var(--transition);
+    }
+    
+    .about-image:hover img {
+      transform: scale(1.05);
+    }
+    
+    .about-text h2 {
+      font-size: 2.2rem;
+      margin-bottom: 20px;
+      color: var(--dark);
+    }
+    
+    .about-text p {
+      margin-bottom: 15px;
+      color: var(--gray);
+    }
+    
+    /* Services */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+    
+    .service-card {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      text-align: center;
+    }
+    
+    .service-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+    
+    .service-icon {
+      width: 70px;
+      height: 70px;
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 30px;
+      margin: 0 auto 20px;
+    }
+    
+    /* Product Section */
+    .product-section {
+      background: var(--accent);
+      padding: 80px 0;
+    }
+    
+    .product-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: center;
+    }
+    
+    .product-image-container {
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    
+    .product-image-container img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: var(--transition);
+    }
+    
+    .product-image-container:hover img {
+      transform: scale(1.05);
+    }
+    
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin-top: 30px;
+    }
+    
+    .benefit-item {
+      background: white;
+      padding: 20px;
       border-radius: 8px;
-      max-width: 1200px;
-      margin-left: auto;
-      margin-right: auto;
+      text-align: center;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
     }
     
-    ul {
-      padding-left: 1.5rem;
-    }
-    
-    ul li {
-      margin: 0.8rem 0;
+    .benefit-icon {
+      font-size: 2rem;
+      color: var(--secondary);
+      margin-bottom: 15px;
     }
     
     .video-container {
       text-align: center;
-      margin: 30px 0;
+      margin: 50px 0;
     }
     
     .video-title {
-      color: #004aad;
+      color: var(--secondary);
       margin-bottom: 20px;
-      font-size: 1.5rem;
+      font-size: 1.8rem;
     }
     
     .product-video {
@@ -142,162 +413,229 @@
       color: #555;
     }
     
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 20px;
-      margin-top: 20px;
-    }
-    
-    .service-item {
-      background: #fff;
-      padding: 25px;
-      border-radius: 8px;
-      text-align: center;
-      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-    }
-    
-    .service-icon {
-      font-size: 2.5rem;
-      color: #FF4500;
-      margin-bottom: 15px;
-    }
-    
-    .benefits {
-      margin-top: 30px;
-    }
-    
-    .benefits-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 20px;
-      margin-top: 20px;
-    }
-    
-    .benefit-item {
-      background: #fff;
-      padding: 20px;
-      border-radius: 8px;
-      text-align: center;
-      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-    }
-    
-    .benefit-icon {
-      font-size: 2rem;
-      color: #004aad;
-      margin-bottom: 15px;
-    }
-    
-    .about-content {
-      display: flex;
-      gap: 25px;
-      align-items: center;
-    }
-    
-    .about-text {
-      flex: 2;
-    }
-    
-    .about-image {
-      flex: 1;
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-    }
-    
-    .about-image img {
-      width: 100%;
-      max-width: 430px;
-      height: auto;
-      display: block;
-      border-radius: 8px;
-      object-fit: contain;
-      margin: 0 auto;
-    }
-    
-    .contact-info {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-      margin-bottom: 20px;
-    }
-    
-    .contact-item {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      background: #fff;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-    }
-    
-    .contact-icon {
-      font-size: 1.8rem;
-      color: #FF4500;
-    }
-    
-    .map-container {
-      margin-top: 20px;
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-    }
-    
-    .map {
-      width: 100%;
-      height: 300px;
-      border: 0;
-    }
-    
-    .product-image {
-      width: 100%;
-      max-width: 250px;
-      height: auto;
-      border-radius: 8px;
-      margin: 10px auto;
-      display: block;
-    }
-    
-    .discurso-section {
-      background-color: #fff;
-      padding: 25px;
-      border-radius: 8px;
-      margin: 20px 0;
-      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-    }
-    
+    /* Applications */
     .applications-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 20px;
-      margin-top: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
     }
     
     .application-item {
-      background: #fff;
-      padding: 20px;
-      border-radius: 8px;
-      text-align: center;
-      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+    }
+    
+    .application-item:hover {
+      transform: translateY(-5px);
     }
     
     .application-image {
       width: 100%;
-      max-width: 150px;
-      height: 150px;
+      height: 200px;
       object-fit: cover;
-      border-radius: 8px;
-      margin: 0 auto 15px;
-      display: block;
     }
     
-    /* Estilos para interactividad */
+    .application-info {
+      padding: 20px;
+      text-align: center;
+    }
+    
+    /* Contact Section */
+    .contact {
+      background: white;
+    }
+    
+    .contact-options {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+    
+    .contact-option {
+      background: var(--light);
+      padding: 40px 30px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+    }
+    
+    .contact-option:hover {
+      transform: translateY(-5px);
+    }
+    
+    .contact-option-icon {
+      font-size: 3.5rem;
+      margin-bottom: 20px;
+    }
+    
+    .contact-option.whatsapp .contact-option-icon {
+      color: #25D366;
+    }
+    
+    .contact-option.email .contact-option-icon {
+      color: var(--primary);
+    }
+    
+    .contact-option.phone .contact-option-icon {
+      color: var(--secondary);
+    }
+    
+    .map-container {
+      margin-top: 60px;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    
+    .map {
+      width: 100%;
+      height: 350px;
+      border: 0;
+    }
+    
+    /* Footer */
+    footer {
+      background: var(--dark);
+      color: white;
+      padding: 60px 0 30px;
+    }
+    
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+    
+    .footer-column h3 {
+      font-size: 1.3rem;
+      margin-bottom: 20px;
+      position: relative;
+      padding-bottom: 10px;
+    }
+    
+    .footer-column h3::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 40px;
+      height: 3px;
+      background: var(--primary);
+      border-radius: 3px;
+    }
+    
+    .footer-links {
+      list-style: none;
+    }
+    
+    .footer-links li {
+      margin-bottom: 12px;
+    }
+    
+    .footer-links a {
+      color: rgba(255, 255, 255, 0.8);
+      text-decoration: none;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .footer-links a:hover {
+      color: var(--primary);
+      transform: translateX(5px);
+    }
+    
+    .footer-links i {
+      font-size: 14px;
+    }
+    
+    .footer-newsletter p {
+      margin-bottom: 20px;
+      opacity: 0.8;
+    }
+    
+    .newsletter-form {
+      display: flex;
+      gap: 10px;
+    }
+    
+    .newsletter-input {
+      flex: 1;
+      padding: 12px 15px;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+    
+    .social-links {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+    }
+    
+    .social-links a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      color: white;
+      transition: var(--transition);
+    }
+    
+    .social-links a:hover {
+      background: var(--primary);
+      transform: translateY(-3px);
+    }
+    
+    .footer-bottom {
+      text-align: center;
+      padding-top: 30px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+    
+    /* Botones flotantes */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 30px;
+      left: 30px;
+      background: #25D366;
+      color: white;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+      z-index: 1000;
+      font-size: 2rem;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+    
+    .whatsapp-float:hover {
+      transform: scale(1.1);
+    }
+    
     .scroll-top {
       position: fixed;
-      bottom: 90px;
+      bottom: 100px;
       right: 30px;
-      background: #FF4500;
+      background: var(--primary);
       color: white;
       width: 50px;
       height: 50px;
@@ -308,7 +646,7 @@
       cursor: pointer;
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
       opacity: 0;
-      transition: opacity 0.3s;
+      transition: var(--transition);
       z-index: 1000;
     }
     
@@ -316,21 +654,11 @@
       opacity: 1;
     }
     
-    .btn {
-      background: #FF4500;
-      color: white;
-      border: none;
-      padding: 12px 25px;
-      border-radius: 4px;
-      cursor: pointer;
-      font-weight: 500;
-      transition: background 0.3s;
+    .scroll-top:hover {
+      transform: translateY(-3px);
     }
     
-    .btn:hover {
-      background: #e03d00;
-    }
-    
+    /* Modal */
     .modal {
       display: none;
       position: fixed;
@@ -345,7 +673,7 @@
     }
     
     .modal-content {
-      background: #F5F5DC;
+      background: var(--accent);
       padding: 30px;
       border-radius: 8px;
       max-width: 500px;
@@ -365,74 +693,67 @@
       font-size: 24px;
     }
     
-    .whatsapp-float {
-      position: fixed;
-      bottom: 30px;
-      left: 30px;
-      background: #25D366;
-      color: white;
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-      z-index: 1000;
-      font-size: 2rem;
-      text-decoration: none;
-    }
-    
-    .contact-options {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-      margin-top: 30px;
-    }
-    
-    .contact-option {
-      background: #fff;
-      padding: 25px;
-      border-radius: 8px;
-      text-align: center;
-      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-    }
-    
-    .contact-option-icon {
-      font-size: 2.5rem;
-      margin-bottom: 15px;
-    }
-    
-    .contact-option.whatsapp .contact-option-icon {
-      color: #25D366;
-    }
-    
-    .contact-option.email .contact-option-icon {
-      color: #FF4500;
-    }
-    
-    .contact-option.phone .contact-option-icon {
-      color: #004aad;
-    }
-    
-    @media (max-width: 900px) {
-      .about-content {
-        flex-direction: column;
+    /* Responsive */
+    @media (max-width: 992px) {
+      .about-content,
+      .product-container {
+        grid-template-columns: 1fr;
       }
       
-      header {
-        flex-direction: column;
-        text-align: center;
-        gap: 15px;
+      .hero h1 {
+        font-size: 2.8rem;
       }
       
-      nav ul {
-        justify-content: center;
+      .contact-options {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .menu {
+        position: fixed;
+        top: 70px;
+        left: -100%;
+        width: 80%;
+        height: calc(100vh - 70px);
+        background: white;
+        flex-direction: column;
+        padding: 40px 20px;
+        box-shadow: var(--shadow);
+        transition: 0.5s;
+      }
+      
+      .menu.active {
+        left: 0;
+      }
+      
+      .menu li {
+        margin: 15px 0;
+      }
+      
+      .mobile-menu-btn {
+        display: block;
+      }
+      
+      .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .hero h1 {
+        font-size: 2.3rem;
+      }
+      
+      .hero p {
+        font-size: 1.1rem;
+      }
+      
+      .section-title h2 {
+        font-size: 2rem;
       }
       
       .scroll-top {
-        bottom: 80px;
+        bottom: 90px;
         right: 20px;
       }
       
@@ -442,68 +763,133 @@
       }
     }
     
-    @media (max-width: 600px) {
-      nav ul {
-        flex-direction: column;
-        gap: 10px;
-        align-items: center;
+    /* Animations */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
       }
-      
-      section {
-        padding: 1.5rem;
+      to {
+        opacity: 1;
+        transform: translateY(0);
       }
-      
-      .video-title {
-        font-size: 1.3rem;
-      }
-      
-      .applications-grid {
-        grid-template-columns: 1fr;
-      }
-      
-      .scroll-top {
-        width: 40px;
-        height: 40px;
-        bottom: 70px;
-        right: 15px;
-      }
-      
-      .whatsapp-float {
-        width: 50px;
-        height: 50px;
-        font-size: 1.7rem;
-        bottom: 15px;
-        left: 15px;
-      }
-      
-      .contact-options {
-        grid-template-columns: 1fr;
-      }
+    }
+    
+    .fade-in {
+      animation: fadeIn 1s ease forwards;
     }
   </style>
 </head>
 <body>
+  <!-- Header -->
   <header>
-    <div class="logo-container">
-      <img src="logo.jpg" alt="Logo EpiSur" class="logo">
-      <h1>EpySur Spa</h1>
+    <div class="container">
+      <nav>
+        <div class="logo-container">
+          <img src="logo.jpg" alt="Logo EpySur" class="logo-img">
+          <div class="logo-text">
+            <i class="fas fa-fire"></i>
+            <span>EpySur</span>
+          </div>
+        </div>
+        <ul class="menu">
+          <li><a href="#home">Inicio</a></li>
+          <li><a href="#producto">Producto</a></li>
+          <li><a href="#about">Nosotros</a></li>
+          <li><a href="#applications">Aplicaciones</a></li>
+          <li><a href="#contact">Contacto</a></li>
+        </ul>
+        <button class="mobile-menu-btn">
+          <i class="fas fa-bars"></i>
+        </button>
+      </nav>
     </div>
-    <nav>
-      <ul>
-        <li><a href="#inicio">Inicio</a></li>
-        <li><a href="#servicios">Producto</a></li>
-        <li><a href="#nosotros">Nosotros</a></li>
-        <li><a href="#contacto">Contacto</a></li>
-      </ul>
-    </nav>
   </header>
 
-  <main>
-    <section id="inicio">
-      <h2>Bienvenidos a EpySur</h2>
-      <p>🔥 Con <strong>EpySur</strong>, tu calor es más seguro 🔥</p>
-      <p>En <strong>EpySur</strong> nos dedicamos a entregar productos innovadores y de calidad en el sur de Chile. Nuestro Deshollinador Granulado es la solución eficaz para el mantenimiento de chimeneas, estufas y sistemas de calefacción a leña o pellet.</p>
-      <p>Pensado especialmente para los hogares de las regiones de La Araucanía, Los Ríos y Los Lagos, este producto garantiza una limpieza profunda, mayor seguridad y un mejor rendimiento de tus equipos, para que disfrutes del calor de tu hogar con total tranquilidad.</p>
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <div class="container">
+      <h1>EpySur - Tu Calor Más Seguro</h1>
+      <p>Producto innovador para el mantenimiento de chimeneas, estufas y sistemas de calefacción a leña o pellet.</p>
+      <div class="hero-buttons">
+        <a href="#producto" class="btn">Conoce Nuestro Producto</a>
+        <a href="#contact" class="btn btn-accent">Contactar Ahora</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="section">
+    <div class="container">
+      <div class="section-title">
+        <h2>Por Qué Elegirnos</h2>
+      </div>
+      <div class="features">
+        <div class="feature-card fade-in">
+          <div class="feature-icon">
+            <i class="fas fa-broom"></i>
+          </div>
+          <h3>Limpieza Profunda</h3>
+          <p>Elimina eficazmente el hollín y la creosota de tus sistemas de calefacción.</p>
+        </div>
+        <div class="feature-card fade-in">
+          <div class="feature-icon">
+            <i class="fas fa-shield-alt"></i>
+          </div>
+          <h3>Mayor Seguridad</h3>
+          <p>Reduce el riesgo de incendios en chimeneas y estufas obstruidas.</p>
+        </div>
+        <div class="feature-card fade-in">
+          <div class="feature-icon">
+            <i class="fas fa-bolt"></i>
+          </div>
+          <h3>Mejor Rendimiento</h3>
+          <p>Optimiza el funcionamiento de tus equipos de calefacción.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Product Section -->
+  <section class="product-section" id="producto">
+    <div class="container">
+      <div class="section-title">
+        <h2>Nuestro Producto</h2>
+      </div>
+      <div class="product-container">
+        <div class="product-image-container">
+          <img src="producto.jpg" alt="Deshollinador Granulado EpySur">
+        </div>
+        <div class="product-info">
+          <h2>Deshollinador Granulado</h2>
+          <p>Producto de alta calidad para limpieza eficiente y segura de chimeneas y estufas. Fácil de usar y altamente efectivo.</p>
+          <p>Su fórmula especializada elimina los depósitos de hollín y creosota que se acumulan con el uso, reduciendo el riesgo de incendio y mejorando la eficiencia de tus equipos.</p>
+          <button class="btn" onclick="openModal('productModal')">Más información</button>
+          
+          <div class="benefits-grid">
+            <div class="benefit-item">
+              <div class="benefit-icon">⏱️</div>
+              <h4>Fácil aplicación</h4>
+              <p>Simplemente agregue el producto al fuego</p>
+            </div>
+            <div class="benefit-item">
+              <div class="benefit-icon">💰</div>
+              <h4>Económico</h4>
+              <p>Evita costosas limpiezas manuales</p>
+            </div>
+            <div class="benefit-item">
+              <div class="benefit-icon">🛡️</div>
+              <h4>Preventivo</h4>
+              <p>Reduce riesgos de incendios</p>
+            </div>
+            <div class="benefit-item">
+              <div class="benefit-icon">🌿</div>
+              <h4>Eficiencia energética</h4>
+              <p>Mejora el rendimiento</p>
+            </div>
+          </div>
+        </div>
+      </div>
       
       <div class="video-container">
         <h3 class="video-title">Vea nuestro Deshollinador granulado en acción</h3>
@@ -515,148 +901,100 @@
         </div>
         <p class="video-description">Video demostrativo de la efectividad de nuestro producto</p>
       </div>
-      
-      <div class="about-image">
-        <img src="cucha.png" alt="Equipo de EpiSur">
-      </div>
-    </section>
+    </div>
+  </section>
 
-    <section id="servicios">
-      <h2>Nuestro Producto</h2>
-      <div class="services-grid">
-        <div class="service-item">
-          <div class="service-icon">🔥</div>
-          <h3>Deshollinador Granulado</h3>
-          <p>Producto de alta calidad para limpieza eficiente y segura de chimeneas y estufas. Fácil de usar y altamente efectivo.</p>
-          <img src="producto.jpg" alt="Deshollinador Granulado EpiSur" class="product-image">
-          <button class="btn" onclick="openModal('productModal')">Más información</button>
-        </div>
+  <!-- Applications Section -->
+  <section class="section" id="applications">
+    <div class="container">
+      <div class="section-title">
+        <h2>Aplicaciones</h2>
       </div>
-
-      <div class="benefits">
-        <h3>Beneficios de nuestro Deshollinador Granulado</h3>
-        <div class="benefits-grid">
-          <div class="benefit-item">
-            <div class="benefit-icon">⏱️</div>
-            <h4>Fácil aplicación</h4>
-            <p>Simplemente agregue el producto al fuego y deje que actúe</p>
-          </div>
-          <div class="benefit-item">
-            <div class="benefit-icon">💰</div>
-            <h4>Económico</h4>
-            <p>Evita costosas limpiezas manuales de chimeneas</p>
-          </div>
-          <div class="benefit-item">
-            <div class="benefit-icon">🛡️</div>
-            <h4>Preventivo</h4>
-            <p>Reduce el riesgo de incendios en chimeneas obstruidas</p>
-          </div>
-          <div class="benefit-item">
-            <div class="benefit-icon">🌿</div>
-            <h4>Eficiencia energética</h4>
-            <p>Mejora el rendimiento de su sistema de calefacción</p>
-          </div>
-        </div>
-      </div>
-    </section>
-    
-    <section id="servicios2">
-      <div class="discurso-section">
-        <p>Deshollinador Granulado Multiuso para Chimeneas y Estufas</p>
-        <p>Mantén tu hogar seguro y tu sistema de calefacción funcionando al máximo con este deshollinador granulado de fácil aplicación. Su fórmula especializada elimina los depósitos de hollín y creosota que se acumulan con el uso, reduciendo el riesgo de incendio y mejorando la eficiencia de tus equipos.</p>
-        <p>A diferencia de otros productos, su formato en gránulos permite que llegue a cada rincón del conducto, incluso en zonas difíciles de alcanzar, asegurando una limpieza profunda y completa en poco tiempo.</p>
-        <p>✅ Versátil y eficaz: Ideal para chimeneas, estufas de combustión lenta a leña, estufas a pellet, cocinas a leña y calderas a leña.</p>
-        <p>✅ Mayor seguridad: Disminuye la acumulación de creosota y hollín, reduciendo riesgos de incendio.</p>
-        <p>✅ Rendimiento superior: Mejora la circulación del aire y optimiza el funcionamiento de tus equipos de calefacción.</p>
-        <p>✅ Fácil aplicación: Solo necesitas usarlo regularmente para mantener tu sistema limpio, sin necesidad de herramientas especiales.</p>
-        <p>Con este deshollinador podrás disfrutar del calor de tu hogar con tranquilidad, cuidando tanto la seguridad de tu familia como la vida útil de tu sistema de calefacción.</p>
-        <p>✨ Una solución práctica, segura y efectiva para mantener tu chimenea o estufa como nueva.</p>
-      </div>
-
-      <div class="benefits">
-        <h3>Nuestro Deshollinador Granulado se puede utilizar en:</h3>
-        <div class="applications-grid">
-          <div class="application-item">
-            <img src="estufa-leña.jpg" alt="Estufa a leña" class="application-image">
-            <h4>Estufas a leña o pellet</h4>
+      <div class="applications-grid">
+        <div class="application-item fade-in">
+          <img src="estufa-leña.jpg" alt="Estufa a leña" class="application-image">
+          <div class="application-info">
+            <h3>Estufas a Leña</h3>
             <p>Limpieza eficaz para todo tipo de estufas</p>
           </div>
-          <div class="application-item">
-            <img src="cocina-leña.jpg" alt="Cocina a leña" class="application-image">
-            <h4>Cocinas a leña</h4>
+        </div>
+        <div class="application-item fade-in">
+          <img src="cocina-leña.jpg" alt="Cocina a leña" class="application-image">
+          <div class="application-info">
+            <h3>Cocinas a Leña</h3>
             <p>Mantenga su cocina funcionando optimalmente</p>
           </div>
-          <div class="application-item">
-            <img src="chimenea.jpg" alt="Chimenea" class="application-image">
-            <h4>Chimeneas</h4>
+        </div>
+        <div class="application-item fade-in">
+          <img src="chimenea.jpg" alt="Chimenea" class="application-image">
+          <div class="application-info">
+            <h3>Chimeneas</h3>
             <p>Proteja su hogar de incendios con chimeneas limpias</p>
           </div>
-          <div class="application-item">
-            <img src="caldera.jpg" alt="Caldera" class="application-image">
-            <h4>Calderas</h4>
+        </div>
+        <div class="application-item fade-in">
+          <img src="caldera.jpg" alt="Caldera" class="application-image">
+          <div class="application-info">
+            <h3>Calderas</h3>
             <p>Mejore la eficiencia de sus sistemas de calefacción</p>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section id="nosotros">
-      <h2>Sobre Nosotros</h2>
+  <!-- About Section -->
+  <section class="section about" id="about">
+    <div class="container">
+      <div class="section-title">
+        <h2>Sobre Nosotros</h2>
+      </div>
       <div class="about-content">
-        <div class="about-text">
-          <p>En EpySur trabajamos con compromiso, calidad y cercanía para entregar la mejor experiencia a nuestros clientes. Nuestra empresa nace de la necesidad de ofrecer una solución eficiente y segura para la limpieza y mantención de sistemas de calefacción en los hogares del sur de Chile.</p>
-          <p>Nuestro Deshollinador Granulado es un producto innovador que simplifica el mantenimiento de chimeneas, estufas y calderas, mejorando su rendimiento, alargando su vida útil y reduciendo el riesgo de incendios.</p>
-          <p>🔥 Confía en la experiencia. Confía en EpySur. 🔥</p>
-        </div>
         <div class="about-image">
           <img src="equipo.jpg" alt="El equipo de EpySur">
         </div>
+        <div class="about-text">
+          <h2>Expertos en Soluciones de Calefacción Segura</h2>
+          <p>En EpySur trabajamos con compromiso, calidad y cercanía para entregar la mejor experiencia a nuestros clientes. Nuestra empresa nace de la necesidad de ofrecer una solución eficiente y segura para la limpieza y mantención de sistemas de calefacción en los hogares del sur de Chile.</p>
+          <p>Nuestro Deshollinador Granulado es un producto innovador que simplifica el mantenimiento de chimeneas, estufas y calderas, mejorando su rendimiento, alargando su vida útil y reduciendo el riesgo de incendios.</p>
+          <p>🔥 Confía en la experiencia. Confía en EpySur. 🔥</p>
+          <a href="#contact" class="btn">Contáctanos</a>
+        </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section id="contacto">
-      <h2>Contacto</h2>
-      <div class="contact-info">
-        <div class="contact-item">
-          <div class="contact-icon">📍</div>
-          <div>
-            <h3>Dirección</h3>
-            <p>La Unión, Chile</p>
-          </div>
-        </div>
-        <div class="contact-item">
-          <div class="contact-icon">📞</div>
-          <div>
-            <h3>Teléfono</h3>
-            <p>+56 9 5188 5355</p>
-          </div>
-        </div>
-        <div class="contact-item">
-          <div class="contact-icon">✉️</div>
-          <div>
-            <h3>Correo</h3>
-            <p>ventas@epysur.cl</p>
-          </div>
-        </div>
+  <!-- Contact Section -->
+  <section class="section contact" id="contact">
+    <div class="container">
+      <div class="section-title">
+        <h2>Contáctanos</h2>
+        <p>Estamos aquí para responder todas tus preguntas sobre nuestro producto</p>
       </div>
       
       <div class="contact-options">
         <div class="contact-option whatsapp">
-          <div class="contact-option-icon">💬</div>
+          <div class="contact-option-icon">
+            <i class="fab fa-whatsapp"></i>
+          </div>
           <h3>WhatsApp</h3>
           <p>Contáctanos directamente por WhatsApp para una respuesta rápida</p>
-          <a href="https://wa.me/56951885355?text=Hola,%20me%20interesa%20el%20deshollinador%20granulado%20de%20EpiSur" class="btn" target="_blank">Escribir por WhatsApp</a>
+          <a href="https://wa.me/56951885355?text=Hola,%20me%20interesa%20el%20deshollinador%20granulado%20de%20EpySur" class="btn" target="_blank">Escribir por WhatsApp</a>
         </div>
         
         <div class="contact-option email">
-          <div class="contact-option-icon">✉️</div>
+          <div class="contact-option-icon">
+            <i class="fas fa-envelope"></i>
+          </div>
           <h3>Correo Electrónico</h3>
           <p>Envíanos un correo directo para consultas o pedidos</p>
-          <a href="mailto:ventas@epysur.cl" class="btn">Enviar correo</a>
+          <a href="mailto:joaquin.rojas@epysur.cl" class="btn">Enviar correo</a>
         </div>
         
         <div class="contact-option phone">
-          <div class="contact-option-icon">📞</div>
+          <div class="contact-option-icon">
+            <i class="fas fa-phone"></i>
+          </div>
           <h3>Llamada Telefónica</h3>
           <p>Llámanos directamente para consultas inmediatas</p>
           <a href="tel:+56951885355" class="btn">Llamar ahora</a>
@@ -666,20 +1004,64 @@
       <div class="map-container">
         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d202844.2955053507!2d-73.35465545!3d-40.2882669!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x96133dd9626d2a4d%3A0x5f4f5d3c28e5b333!2sLa%20Uni%C3%B3n%2C%20Los%20R%C3%ADos!5e0!3m2!1ses!2scl!4v1710868942351!5m2!1ses!2scl" class="map" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
-    </section>
-  </main>
+    </div>
+  </section>
 
+  <!-- Footer -->
   <footer>
-    <p>&copy; 2025 EpySur Spa - Todos los derechos reservados.</p>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-column">
+          <h3>EpySur</h3>
+          <p>Soluciones innovadoras para el mantenimiento de sistemas de calefacción en el sur de Chile.</p>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-whatsapp"></i></a>
+          </div>
+        </div>
+        <div class="footer-column">
+          <h3>Enlaces Rápidos</h3>
+          <ul class="footer-links">
+            <li><a href="#home"><i class="fas fa-chevron-right"></i> Inicio</a></li>
+            <li><a href="#producto"><i class="fas fa-chevron-right"></i> Producto</a></li>
+            <li><a href="#about"><i class="fas fa-chevron-right"></i> Nosotros</a></li>
+            <li><a href="#applications"><i class="fas fa-chevron-right"></i> Aplicaciones</a></li>
+            <li><a href="#contact"><i class="fas fa-chevron-right"></i> Contacto</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>Productos</h3>
+          <ul class="footer-links">
+            <li><a href="#"><i class="fas fa-chevron-right"></i> Deshollinador Granulado</a></li>
+            <li><a href="#"><i class="fas fa-chevron-right"></i> Accesorios de Limpieza</a></li>
+            <li><a href="#"><i class="fas fa-chevron-right"></i> Productos de Mantenimiento</a></li>
+          </ul>
+        </div>
+        <div class="footer-column footer-newsletter">
+          <h3>Boletín Informativo</h3>
+          <p>Suscríbete para recibir consejos sobre mantenimiento y ofertas especiales.</p>
+          <form class="newsletter-form">
+            <input type="email" class="newsletter-input" placeholder="Tu correo electrónico" required>
+            <button type="submit" class="btn"><i class="fas fa-paper-plane"></i></button>
+          </form>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2023 EpySur Spa. Todos los derechos reservados.</p>
+      </div>
+    </div>
   </footer>
 
   <!-- Botón de WhatsApp -->
-  <a href="https://wa.me/56951885355?text=Hola,%20me%20interesa%20el%20deshollinador%20granulado%20de%20EpiSur" class="whatsapp-float" target="_blank">
-    💬
+  <a href="https://wa.me/56951885355?text=Hola,%20me%20interesa%20el%20deshollinador%20granulado%20de%20EpySur" class="whatsapp-float" target="_blank">
+    <i class="fab fa-whatsapp"></i>
   </a>
 
   <!-- Botón para volver arriba -->
-  <div class="scroll-top" onclick="scrollToTop()">↑</div>
+  <div class="scroll-top" onclick="scrollToTop()">
+    <i class="fas fa-arrow-up"></i>
+  </div>
 
   <!-- Modal para producto -->
   <div id="productModal" class="modal">
@@ -699,6 +1081,49 @@
   </div>
 
   <script>
+    // Mobile Menu Toggle
+    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+    const menu = document.querySelector('.menu');
+    
+    mobileMenuBtn.addEventListener('click', () => {
+      menu.classList.toggle('active');
+      mobileMenuBtn.innerHTML = menu.classList.contains('active') ? 
+        '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+    });
+    
+    // Close menu when clicking on a link
+    document.querySelectorAll('.menu a').forEach(link => {
+      link.addEventListener('click', () => {
+        menu.classList.remove('active');
+        mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+      });
+    });
+    
+    // Newsletter form
+    document.querySelector('.newsletter-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert('¡Gracias por suscribirte a nuestro boletín!');
+      this.reset();
+    });
+    
+    // Animation on scroll
+    const fadeElements = document.querySelectorAll('.fade-in');
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.animation = 'fadeIn 1s ease forwards';
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.1
+    });
+    
+    fadeElements.forEach(element => {
+      observer.observe(element);
+    });
+    
     // Botón para volver arriba
     const scrollButton = document.querySelector('.scroll-top');
     
@@ -716,20 +1141,6 @@
         behavior: 'smooth'
       });
     }
-    
-    // Navegación suave
-    document.querySelectorAll('nav a').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        const targetId = this.getAttribute('href');
-        const targetElement = document.querySelector(targetId);
-        
-        window.scrollTo({
-          top: targetElement.offsetTop - 20,
-          behavior: 'smooth'
-        });
-      });
-    });
     
     // Funcionalidad del modal
     function openModal(modalId) {
